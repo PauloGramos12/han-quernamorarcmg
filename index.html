@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pedido de Namoro</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+      margin: 0;
+    }
+    .container {
+      text-align: center;
+    }
+    .button {
+      padding: 20px 50px;
+      font-size: 20px;
+      cursor: pointer;
+      border: none;
+      border-radius: 10px;
+      transition: all 0.3s;
+    }
+    .sim {
+      background-color: green;
+      color: white;
+    }
+    .nao {
+      background-color: red;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1> essa barbie ai aceita o max steel aqui?</h1>
+  <button id="simButton" class="button sim">Sim</button>
+  <button id="naoButton" class="button nao">Não</button>
+</div>
+
+<audio id="music" src="c:\Users\paulo\Downloads\WhatsApp Audio 2025-04-02 at 21.19.45.mp4" preload="auto"></audio>
+
+<script>
+  const simButton = document.getElementById('simButton');
+  const naoButton = document.getElementById('naoButton');
+  const music = document.getElementById('music');
+
+  // Função para teletransportar o botão "Não"
+  function teleportNao() {
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+    
+    const randomX = Math.random() * (screenWidth - naoButton.offsetWidth);
+    const randomY = Math.random() * (screenHeight - naoButton.offsetHeight);
+    
+    naoButton.style.position = 'absolute';
+    naoButton.style.left = randomX + 'px';
+    naoButton.style.top = randomY + 'px';
+  }
+
+  // Função para mostrar a mensagem e tocar a música
+  function showParabens() {
+    const message = "Uaiii, que bom que você escolheu o pão de queijo! 😄\n\nFica tranquilo, não precisa se preocupar, você fez a escolha certa!";
+    alert(message);
+    
+    // Toca a música "Careless Whisper"
+    music.play();
+  }
+
+  // Ação quando clicar em "Sim"
+  simButton.addEventListener('click', () => {
+    showParabens();
+  });
+
+  // Ação quando clicar em "Não"
+  naoButton.addEventListener('click', () => {
+    teleportNao();
+  });
+</script>
+
+</body>
+</html>
