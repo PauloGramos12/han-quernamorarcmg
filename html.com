@@ -48,14 +48,5 @@
 
     #resposta {
       margin-top: 30px;
-      font-size: 18px;
-      color: green;
-    }
-  </style>
-</head>
-<body>
+      font-siz
 
-  <h1>Quer sair comigo Moca Bonita? 😏</h1>
-
-  <div class="button-container">
-    <button id="sim" on
