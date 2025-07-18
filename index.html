@@ -37,12 +37,14 @@
     #sim {
       left: 50px;
       top: 100px;
+      background-color: green;
+      color: white;
     }
 
     #nao {
       left: 150px;
       top: 100px;
-      background-color: #ff4d4d;
+      background-color: red;
       color: white;
     }
 
@@ -67,14 +69,10 @@
   <script>
     const btnSim = document.getElementById('sim');
     const btnNao = document.getElementById('nao');
+    const container = document.querySelector('.button-container');
     const resposta = document.getElementById('resposta');
 
-    btnSim.addEventListener('click', () => {
-      resposta.innerText = "Sabia que você não ia resistir! 😍";
-    });
-
-    btnNao.addEventListener('mouseover', () => {
-      const container = document.querySelector('.button-container');
+    function moverBotao() {
       const maxX = container.clientWidth - btnNao.offsetWidth;
       const maxY = container.clientHeight - btnNao.offsetHeight;
 
@@ -83,6 +81,17 @@
 
       btnNao.style.left = `${randomX}px`;
       btnNao.style.top = `${randomY}px`;
+    }
+
+    btnSim.addEventListener('click', () => {
+      resposta.innerText = "Sabia que você não ia resistir! 😍";
+    });
+
+    // Funciona tanto no PC (mouse) quanto no celular (toque)
+    btnNao.addEventListener('mouseover', moverBotao);
+    btnNao.addEventListener('touchstart', (e) => {
+      e.preventDefault(); // Evita clique acidental no botão
+      moverBotao();
     });
   </script>
 
