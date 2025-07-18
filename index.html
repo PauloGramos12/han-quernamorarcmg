@@ -1,87 +1,90 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> convite pra sair </title>
+  <title>Convite Irrecusável</title>
   <style>
     body {
       font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      height: 100vh;
+      background: #f0f0f0;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      background-color: #f0f0f0;
-      margin: 0;
     }
-    .container {
-      text-align: center;
+
+    h1 {
+      margin-bottom: 40px;
     }
-    .button {
-      padding: 20px 50px;
-      font-size: 20px;
+
+    .button-container {
+      position: relative;
+      width: 300px;
+      height: 200px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      position: absolute;
+      transition: top 0.2s, left 0.2s;
       cursor: pointer;
-      border: none;
-      border-radius: 10px;
-      transition: all 0.3s;
     }
-    .sim {
-      background-color: green;
+
+    #sim {
+      left: 50px;
+      top: 100px;
+    }
+
+    #nao {
+      left: 150px;
+      top: 100px;
+      background-color: #ff4d4d;
       color: white;
     }
-    .nao {
-      background-color: red;
-      color: white;
+
+    #resposta {
+      margin-top: 30px;
+      font-size: 18px;
+      color: green;
     }
   </style>
 </head>
 <body>
 
-<div class="container">
-  <h1> Quer Sair Comigo??</h1>
-  <button id="simButton" class="button sim">Sim</button>
-  <button id="naoButton" class="button nao">Não</button>
-</div>
+  <h1>Quer sair comigo, Moça Bonita? 😏</h1>
 
-<audio id="music" src="c:\Users\paulo\Downloads\WhatsApp Audio 2025-04-02 at 21.19.45.mp4" preload="auto"></audio>
+  <div class="button-container">
+    <button id="sim">Sim</button>
+    <button id="nao">Não</button>
+  </div>
 
-<script>
-  const simButton = document.getElementById('simButton');
-  const naoButton = document.getElementById('naoButton');
-  const music = document.getElementById('music');
+  <div id="resposta"></div>
 
-  // Função para teletransportar o botão "Não"
-  function teleportNao() {
-    const screenWidth = window.innerWidth;
-    const screenHeight = window.innerHeight;
-    
-    const randomX = Math.random() * (screenWidth - naoButton.offsetWidth);
-    const randomY = Math.random() * (screenHeight - naoButton.offsetHeight);
-    
-    naoButton.style.position = 'absolute';
-    naoButton.style.left = randomX + 'px';
-    naoButton.style.top = randomY + 'px';
-  }
+  <script>
+    const btnSim = document.getElementById('sim');
+    const btnNao = document.getElementById('nao');
+    const resposta = document.getElementById('resposta');
 
-  // Função para mostrar a mensagem e tocar a música
-  function showParabens() {
-    const message =  😄\n\nFica tranquilo, não precisa se preocupar, você fez a escolha certa!";
-    alert(message);
-    
-    // Toca a música "Careless Whisper"
-    music.play();
-  }
+    btnSim.addEventListener('click', () => {
+      resposta.innerText = "Sabia que você não ia resistir! 😍";
+    });
 
-  // Ação quando clicar em "Sim"
-  simButton.addEventListener('click', () => {
-    showParabens();
-  });
+    btnNao.addEventListener('mouseover', () => {
+      const container = document.querySelector('.button-container');
+      const maxX = container.clientWidth - btnNao.offsetWidth;
+      const maxY = container.clientHeight - btnNao.offsetHeight;
 
-  // Ação quando clicar em "Não"
-  naoButton.addEventListener('click', () => {
-    teleportNao();
-  });
-</script>
+      const randomX = Math.floor(Math.random() * maxX);
+      const randomY = Math.floor(Math.random() * maxY);
+
+      btnNao.style.left = `${randomX}px`;
+      btnNao.style.top = `${randomY}px`;
+    });
+  </script>
 
 </body>
 </html>
